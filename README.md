@@ -1,2 +1,4 @@
-# calculator-vanillajs
-Frontend Project (01 - 01 - 2024)
+# Calculator with Vanilla Javascript
+Copyright : Mirza Qamaruzzaman <br>
+Start : 01 - Januari - 2024 <br>
+End : ?
