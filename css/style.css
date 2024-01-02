@@ -19,6 +19,7 @@ body {
     border-radius: 10px;
     margin: 10px auto;
     text-align: right;
+    background-color: rgb(39, 39, 39);
     box-shadow: inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5), inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3);
 }
 
@@ -30,7 +31,78 @@ body {
 .calculator-key {
     width: 376px;
     margin: 20px auto;
-    border: 1px solid white;
     height: 350px;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.key-equal {
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 5px;
+    border: none;
+    box-shadow: inset 1px 1px 3px 1px rgba(255, 255, 255, 0.3), inset -3px -3px 4px 1px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.key-operator, .key-number, .key-clear, .key-equal {
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 5px;
+    background-color: rgb(48, 48, 48);
+    border: none;
+    box-shadow: inset 1px 1px 3px 1px rgba(255, 255, 255, 0.3), inset -3px -3px 4px 1px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.key-clear {
+    font-size: 12px;
+    background-color: white;
+    color: black;
+}
+
+.key-equal {
+    grid-row: 2 / 6;
+    grid-column: 4 / 5;
+    background-color: rgb(255, 76, 56);
+}
+
+.key-operator[data-action="add"] {
+    color: rgb(255, 76, 56);
+}
+
+.key-operator[data-action="subtract"] {
+    color: rgb(48, 119, 250);
+}
+
+.key-operator[data-action="multiply"] {
+    color: rgb(0, 223, 0);
+}
+
+.key-operator[data-action="divide"] {
+    color: rgb(245, 245, 2);
+}
+
+.key-equal:active {
+    background-color: rgba(255, 76, 56, 0.8);
+    box-shadow: inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3), inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.key-operator:active, .key-number:active {
+    background-color: rgba(39, 39, 39, 0.8);
+    box-shadow: inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3), inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.key-clear:active {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3), inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
 }
