@@ -13,22 +13,36 @@
 
 </head>
 <body>
-    
-    <!-- Chechbox Change Dark / Light : Start -->
-    <div class="toggle-mode">
-        <input type="checkbox" id="checkbox">
-    </div>
-    <!-- Chechbox Change Dark / Light : End -->
 
     <!-- Calculator Neumorphism : Start -->
     <div class="calculator">
 
         <!-- Calculator Display : Start -->
-        <div class="calculator-display">0</div>
+        <div class="calculator-display">
+            <p>0</p>
+        </div>
         <!-- Calculator Display : End -->
 
         <!-- Calculator Keys : Start -->
-        <div class="calculator-key"> ... </div>
+        <div class="calculator-key">
+            <button class="key-operator" data-action="add">+</button>
+            <button class="key-operator" data-action="subtract">-</button>
+            <button class="key-operator" data-action="multiply">&times;</button>
+            <button class="key-operator" data-action="divide">÷</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>0</button>
+            <button data-action="decimal">.</button>
+            <button data-action="clear">AC</button>
+            <button class="key--equal" data-action="calculate">=</button>
+        </div>
         <!-- Calculator Keys : End -->
         
     </div>
