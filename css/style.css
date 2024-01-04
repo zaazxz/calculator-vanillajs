@@ -1,16 +1,24 @@
+@font-face {
+    font-family: "digital";
+    src: url('../font/digital-7.ttf');
+}
+
 body {
     width: 100%;
     color: white;
+    font-family: 'digital';
     background: linear-gradient(90deg, #47d5e1 0%, #73b9ff 100%);
 }
 
 .calculator {
     margin: 80px auto;
+    padding-top: 10px;
     width: 400px;
     height: 500px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 10px;
     background-color: #303030;
+    box-shadow: 10px 10px 13px 3px rgba(0, 0, 0, 0.8);
 }
 
 .calculator-display {
@@ -104,5 +112,10 @@ body {
 
 .key-clear:active {
     background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3), inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.is-depressed {
+    background-color: rgba(39, 39, 39, 0.8);
     box-shadow: inset -1px -1px 3px 1px rgba(255, 255, 255, 0.3), inset 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
 }
