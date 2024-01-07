@@ -1,5 +1,3 @@
-// Masih ada bug AWKOWKOWKOWKOWKOWK
-
 // Variable
 const calculator = document.querySelector('.calculator')
 const keys = calculator.querySelector(".calculator-key");
@@ -15,6 +13,9 @@ keys.addEventListener("click", e => {
         const keyContent = key.textContent
         const displayedNum = display.textContent
         const previousKeyType = calculator.dataset.previousKeyType
+        
+        // Remove class "is-depressed" from all keys
+        Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'))
 
         // Checking if key have data action or not
         if (!action) {
@@ -25,6 +26,9 @@ keys.addEventListener("click", e => {
             } else {
                 display.textContent = displayedNum + keyContent
             }
+
+            // Set Key Type
+            calculator.dataset.previousKeyType = 'number'
 
         }
 
@@ -49,14 +53,24 @@ keys.addEventListener("click", e => {
         // Checking if data action decimal
         if (action === "decimal") {
 
-            // If decimal key clicked
-            display.textContent = displayedNum + '.'
+            // Checking Displayed Number
+            if (!displayedNum.includes('.')) {
+                display.textContent = displayedNum + '.'
+            } else if (previousKeyType === 'operator') {
+                display.textContent = '0.'
+            }
+
+            // Set Key Type
+            calculator.dataset.previousKeyType = 'decimal'
 
         }
 
         // Checking if data action clear
         if (action === "clear") {
-            console.log('Clear Key!')
+
+            // Set Key Type
+            calculator.dataset.previousKeyType = 'clear'
+
         }
 
         // Checking if data action equal
@@ -67,12 +81,13 @@ keys.addEventListener("click", e => {
             const operator = calculator.dataset.operator
             const secondValue = displayedNum
   
+            // Set Key Type
+            calculator.dataset.previousKeyType = 'calculate'
+
+            // Calculating
             display.textContent = calculate(firstValue, operator, secondValue)
 
         }
-
-        // Remove class "is-depressed" from all keys
-        Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'))
 
     }
 })
@@ -84,13 +99,13 @@ const calculate = (n1, operator, n2) => {
   
     // Logic
     if (operator === 'add') {
-      result = n1 + n2
+      result = parseFloat(n1) + parseFloat(n2)
     } else if (operator === 'subtract') {
-      result = n1 - n2
+      result = parseFloat(n1) - parseFloat(n2)
     } else if (operator === 'multiply') {
-      result = n1 * n2
+      result = parseFloat(n1) * parseFloat(n2)
     } else if (operator === 'divide') {
-      result = n1 / n2
+      result = parseFloat(n1) / parseFloat(n2)
     }
     
     // Return Value
