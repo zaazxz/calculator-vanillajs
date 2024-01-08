@@ -1,17 +1,14 @@
 // Calculate Function
 const calculate = (n1, operator, n2) => {
-  let result = "";
-  if (operator === "add") {
-    result = parseFloat(n1) + parseFloat(n2);
-  } else if (operator === "subtract") {
-    result = parseFloat(n1) - parseFloat(n2);
-  } else if (operator === "multiply") {
-    result = parseFloat(n1) * parseFloat(n2);
-  } else if (operator === "divide") {
-    result = parseFloat(n1) / parseFloat(n2);
-  }
+  // Numbers
+  const firstNum = parseFloat(n1);
+  const secondNum = parseFloat(n2);
 
-  return result;
+  // Logic
+  if (operator === "add") return firstNum + secondNum;
+  if (operator === "subtract") return firstNum - secondNum;
+  if (operator === "multiply") return firstNum * secondNum;
+  if (operator === "divide") return firstNum / secondNum;
 };
 
 // Variable
@@ -74,7 +71,12 @@ keys.addEventListener("click", (e) => {
       const secondValue = displayedNum;
 
       // Note : It's sufficient to check that firstValue, because second value always exists
-      if (firstValue && operator && previousKeyType !== "operator" || previousKeyType === "calculate") {
+      if (
+        firstValue &&
+        operator &&
+        previousKeyType !== "operator" &&
+        previousKeyType !== "calculate"
+      ) {
         const calcValue = calculate(firstValue, operator, secondValue);
         display.textContent = calcValue;
 
@@ -113,20 +115,20 @@ keys.addEventListener("click", (e) => {
 
     // Calculate
     if (action === "calculate") {
-      const firstValue = calculator.dataset.firstValue;
+      let firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      const secondValue = displayedNum;
+      let secondValue = displayedNum;
 
       if (firstValue) {
-        if (previousKeyType === "operator") {
+        if (previousKeyType === "calculate") {
           firstValue = displayedNum;
           secondValue = calculator.dataset.modValue;
         }
+
         display.textContent = calculate(firstValue, operator, secondValue);
       }
 
-      // Set ModValue attribute
-      calculator.dataset.modValue = displayedNum;
+      calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
     }
   }
